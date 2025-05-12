@@ -1,0 +1,34 @@
+.customer-profile {
+  padding: 24px;
+}
+
+.insight-report {
+  margin-bottom: 16px;
+}
+
+.insight-report p {
+  margin-top: 8px;
+}
+
+.report-detail {
+  padding: 16px;
+}
+
+.report-section {
+  margin-bottom: 24px;
+}
+
+.report-section ul {
+  margin-top: 16px;
+  padding-left: 20px;
+}
+
+.report-section li {
+  margin-bottom: 8px;
+  line-height: 1.6;
+}
+
+.ant-modal-body {
+  max-height: 70vh;
+  overflow-y: auto;
+}

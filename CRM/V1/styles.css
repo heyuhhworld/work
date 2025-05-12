@@ -1,0 +1,502 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 20px;
+    display: flex;
+    gap: 20px;
+}
+
+/* 客户信息卡片样式 */
+.customer-info-card {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    flex: 1;
+    max-width: 400px;
+}
+
+.customer-info-card h2 {
+    margin-bottom: 20px;
+    color: #333;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+.info-item {
+    margin-bottom: 15px;
+}
+
+.info-item label {
+    font-weight: bold;
+    color: #666;
+    display: inline-block;
+    width: 60px;
+}
+
+/* 时间轴样式 */
+.timeline-container {
+    flex: 2;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.timeline-container h2 {
+    margin-bottom: 20px;
+    color: #333;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+.timeline {
+    position: relative;
+    padding-left: 30px;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 2px;
+    height: 100%;
+    background: #e0e0e0;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 30px;
+    transition: all 0.3s ease;
+}
+
+.timeline-item:hover .timeline-dot {
+    transform: scale(1.2);
+}
+
+.timeline-dot {
+    position: absolute;
+    left: -34px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #1890ff;
+    border: 2px solid white;
+    transition: transform 0.3s ease;
+}
+
+.report-card {
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: 6px;
+    border: 1px solid #eee;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.report-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.report-card h3 {
+    color: #1890ff;
+    margin-bottom: 8px;
+}
+
+.report-card .date {
+    color: #999;
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+.report-card .content {
+    line-height: 1.6;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+    
+    .customer-info-card {
+        max-width: 100%;
+    }
+}
+
+/* 模态框样式 */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 1000;
+}
+
+.modal-content {
+    position: relative;
+    background-color: white;
+    margin: 50px auto;
+    padding: 25px;
+    width: 80%;
+    max-width: 800px;
+    border-radius: 8px;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.close-btn {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #666;
+}
+
+.modal-date {
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.report-section {
+    margin: 20px 0;
+    padding: 15px;
+    background: #f9f9f9;
+    border-radius: 6px;
+}
+
+.report-section h3 {
+    color: #1890ff;
+    margin-bottom: 15px;
+}
+
+.report-section ul {
+    margin-top: 16px;
+    padding-left: 20px;
+}
+
+.report-section li {
+    margin-bottom: 8px;
+    line-height: 1.6;
+}
+
+/* 编辑按钮和编辑器样式 */
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.edit-btn {
+    padding: 4px 12px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.edit-btn:hover {
+    background: #f5f5f5;
+}
+
+.editor-container {
+    margin-top: 10px;
+}
+
+.editor-container textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    font-family: inherit;
+}
+
+.editor-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.editor-buttons button {
+    padding: 6px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.editor-buttons button:first-child {
+    background: #1890ff;
+    color: white;
+    border: none;
+}
+
+.editor-buttons button:last-child {
+    background: #fff;
+    border: 1px solid #ddd;
+}
+
+/* 评论区域样式 */
+.comments-section {
+    margin-top: 30px;
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+}
+
+.comments-list {
+    margin-bottom: 20px;
+}
+
+.comment-item {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 10px;
+}
+
+.comment-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: #666;
+}
+
+.comment-content {
+    margin-top: 5px;
+    line-height: 1.5;
+}
+
+.comment-input {
+    margin-top: 15px;
+}
+
+.comment-input textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    min-height: 60px;
+    font-family: inherit;
+}
+
+.comment-input button {
+    padding: 8px 20px;
+    background: #1890ff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.comment-input button:hover {
+    background: #40a9ff;
+}
+
+/* 选中文本弹出评论框 */
+.selection-tooltip {
+    position: absolute;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    z-index: 1100;
+    display: none;
+}
+
+/* 模态框标题栏样式 */
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.modal-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.share-btn {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 6px 12px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+    color: #666;
+}
+
+.share-btn:hover {
+    background: #f5f5f5;
+}
+
+/* 分享弹窗样式 */
+.share-modal .modal-content {
+    max-width: 500px;
+}
+
+.share-content h3 {
+    margin-bottom: 15px;
+}
+
+.share-link-container {
+    display: flex;
+    gap: 10px;
+    margin: 15px 0;
+}
+
+.share-link-container input {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.share-link-container button {
+    padding: 8px 16px;
+    background: #1890ff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.share-link-container button:hover {
+    background: #40a9ff;
+}
+
+/* 分享模式下的样式 */
+.shared-view .edit-btn {
+    display: none;
+}
+
+/* 评论时间轴样式 */
+.comment-timeline-item {
+    animation: slideIn 0.3s ease-out;
+}
+
+.comment-dot {
+    background: #52c41a;  /* 使用不同的颜色区分评论 */
+}
+
+.comment-card {
+    background: #f6ffed;  /* 浅绿色背景 */
+    border-color: #b7eb8f;
+}
+
+.comment-tag {
+    display: inline-block;
+    padding: 2px 8px;
+    background: #52c41a;
+    color: white;
+    border-radius: 4px;
+    font-size: 12px;
+    margin-bottom: 8px;
+}
+
+/* 动画效果 */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-out {
+    animation: fadeOut 0.5s ease-out forwards;
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+}
+
+/* 产品经理评论样式 */
+.pm-dot {
+    background: #722ed1;  /* 紫色 */
+}
+
+.pm-card {
+    background: #f9f0ff;
+    border-color: #d3adf7;
+}
+
+.pm-tag {
+    display: inline-block;
+    padding: 2px 8px;
+    background: #722ed1;
+    color: white;
+    border-radius: 4px;
+    font-size: 12px;
+    margin-bottom: 8px;
+}
+
+/* 订单样式 */
+.order-dot {
+    background: #fa8c16;  /* 橙色 */
+}
+
+.order-card {
+    background: #fff7e6;
+    border-color: #ffd591;
+}
+
+.order-tag {
+    display: inline-block;
+    padding: 2px 8px;
+    background: #fa8c16;
+    color: white;
+    border-radius: 4px;
+    font-size: 12px;
+    margin-bottom: 8px;
+}
+
+.order-details {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px dashed #ffd591;
+}
+
+.order-details p {
+    margin-bottom: 5px;
+}
+
+/* 卡片hover效果 */
+.pm-card:hover, .order-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
